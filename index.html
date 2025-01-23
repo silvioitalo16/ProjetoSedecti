@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload Your PDF</h1>
+        <div class="upload-box" id="uploadBox">
+            <p>Click or Drag and Drop to Upload</p>
+            <input type="file" id="fileInput" accept="application/pdf">
+        </div>
+        <div class="file-info" id="fileInfo">No file selected</div>
+        <button class="upload-button" id="uploadButton">Upload and Censor</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
