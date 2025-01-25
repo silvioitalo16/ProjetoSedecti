@@ -4,10 +4,32 @@ const fileInfo = document.getElementById('fileInfo');
 const uploadButton = document.getElementById('uploadButton');
 
 const sensitivePatterns = [
-    /\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b/g, // CPF (with or without formatting)
-    /\b\d{2}\.\d{3}\.\d{3}-\d{1}\b/g,   // RG
-    /\b\d{4,5}-\d{4}\b/g,               // Phone
-    /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g // Email
+    // CPF: Formatos com ou sem pontuação (xxx.xxx.xxx-xx ou xxxxxxxxxxx)
+    /\b\d{3}\.?\d{3}\.?\d{3}-?\d{2}\b/g,
+
+    // RG: Formatos comuns como xx.xxx.xxx-x
+    /\b\d{1,2}\.?\d{3}\.?\d{3}-?\d{1}\b/g,
+
+    // Telefones: Suporte a formatos com e sem DDD, com ou sem espaços e traços
+    /\(?\d{2}\)?[\s.-]?\d{4,5}[\s.-]?\d{4}\b/g,
+
+    // E-mails: Padrão mais robusto para validação de e-mails
+    /\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/g,
+
+    // CEP: Formato brasileiro de CEP (xxxxx-xxx ou xxxxxxxx)
+    /\b\d{5}-?\d{3}\b/g,
+
+    // CNPJ: Formatos com ou sem pontuação (xx.xxx.xxx/xxxx-xx ou xxxxxxxxxxxxxx)
+    /\b\d{2}\.?\d{3}\.?\d{3}\/?\d{4}-?\d{2}\b/g,
+
+    // Cartões de crédito: Padrão genérico de 16 dígitos agrupados ou contínuos
+    /\b(?:\d{4}[\s-]?){3}\d{4}\b/g,
+
+    // Endereços IP: IPv4 e IPv6
+    /\b\d{1,3}(\.\d{1,3}){3}\b|\b([a-fA-F0-9:]+:+)+[a-fA-F0-9]+\b/g,
+
+    // Data de nascimento: Formatos DD/MM/AAAA ou DD-MM-AAAA
+    /\b\d{2}[\/-]\d{2}[\/-]\d{4}\b/g
 ];
 
 uploadBox.addEventListener('dragover', (e) => {

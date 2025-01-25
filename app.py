@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """Renderiza a página inicial."""
-    return render_template('template/index.html')
+    return render_template('index.html')
 
 @app.route('/process', methods=['POST'])
 def process():
